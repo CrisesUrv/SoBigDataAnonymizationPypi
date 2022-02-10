@@ -1,0 +1,5 @@
+pandas
+ipython
+tqdm
+nltk
+jinja2
