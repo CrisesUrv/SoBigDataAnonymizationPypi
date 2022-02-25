@@ -14,30 +14,30 @@ class Attribute_type(Enum):
     # ["name","path", "module", "class"]
     # Current available attribute types:
     NUMERICAL_CONTINUOUS = ["numerical_continuous",
-                            "src.attribute_types.numerical_continuous",
+                            "attribute_types.numerical_continuous",
                             "numerical_continuous",
                             "Numerical_continuous"]
     NUMERICAL_DISCRETE = ["numerical_discrete",
-                          "src.attribute_types.numerical_discrete",
+                          "attribute_types.numerical_discrete",
                           "numerical_discrete",
                           "Numerical_discrete"]
     PLAIN_CATEGORICAL = ["plain_categorical",
-                         "src.attribute_types.plain_categorical",
+                         "attribute_types.plain_categorical",
                          "plain_categorical",
                          "Plain_categorical"]
     SEMANTIC_CATEGORICAL_WORDNET = ["semantic_categorical_wordnet",
-                                    "src.attribute_types.semantic_categorical_wordnet",
+                                    "attribute_types.semantic_categorical_wordnet",
                                     "semantic_categorical_wordnet",
                                     "Semantic_categorical_wordnet"]
     DATE = ["date",
-            "src.attribute_types.date",
+            "attribute_types.date",
             "date",
             "Date"]
     COORDINATE = ["coordinate",
-                  "src.attribute_types.coordinate",
+                  "attribute_types.coordinate",
                   "coordinate",
                   "Coordinate"]
     DATETIME = ["datetime",
-            "src.attribute_types.datetime",
+            "attribute_types.datetime",
             "datetime",
             "Datetime"]

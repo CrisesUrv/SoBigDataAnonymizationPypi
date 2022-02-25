@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: anonymization-crisesURV
-Version: 0.0.9
+Version: 0.0.11
 Summary: Anonymization library
 Home-page: https://github.com/CrisesUrv/SoBigDataTraining/tree/master/anonymization
 Author: Crises
@@ -15,5 +15,5 @@ Requires-Python: >=3.6
 Description-Content-Type: text/markdown
 License-File: LICENSE
 
-# Anonymization training
+# Anonymization library
 

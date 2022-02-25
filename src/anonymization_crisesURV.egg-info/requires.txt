@@ -3,3 +3,4 @@ ipython
 tqdm
 nltk
 jinja2
+ipywidgets
