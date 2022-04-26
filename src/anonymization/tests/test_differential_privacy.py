@@ -1,8 +1,8 @@
-from src.entities.dataset_DataFrame import Dataset_DataFrame
-from src.algorithms.microaggregation import Microaggregation
-from src.algorithms.differential_privacy import Differential_privacy
-from src.utils import utils
-from src.algorithms.anonymization_scheme import Anonymization_scheme
+from anonymization.entities.dataset_DataFrame import Dataset_DataFrame
+from anonymization.algorithms.microaggregation import Microaggregation
+from anonymization.algorithms.differential_privacy import Differential_privacy
+from anonymization.utils import utils
+from anonymization.algorithms.anonymization_scheme import Anonymization_scheme
 
 """
 References:

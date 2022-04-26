@@ -13,12 +13,12 @@ from abc import ABC, abstractmethod
 from xml.dom import minidom
 import pandas as pd
 from IPython.display import display
-from entities.attribute import Attribute
-from utils.utils import get_class
-from attribute_types.attribute_type import Attribute_type
-from entities.record import Record
-from utils.sensitivity_type import Sensitivity_type
-from utils import constants
+from anonymization.entities.attribute import Attribute
+from anonymization.utils.utils import get_class
+from anonymization.attribute_types.attribute_type import Attribute_type
+from anonymization.entities.record import Record
+from anonymization.utils.sensitivity_type import Sensitivity_type
+from anonymization.utils import constants
 import random
 from urllib.request import urlopen
 

@@ -2,8 +2,8 @@
 # from src.utils import utils, constants
 # import numpy as np
 # from collections import Counter
-from attribute_types.value import Value
-from utils import utils, constants
+from anonymization.attribute_types.value import Value
+from anonymization.utils import utils, constants
 import numpy as np
 from collections import Counter
 

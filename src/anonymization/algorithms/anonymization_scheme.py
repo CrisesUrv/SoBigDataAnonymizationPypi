@@ -11,17 +11,17 @@
 # from tqdm.auto import tqdm
 # from src.utils import utils, constants
 from abc import ABC, abstractmethod
-from entities.information_loss_result import Information_loss_result
-from utils.sensitivity_type import Sensitivity_type
+from anonymization.entities.information_loss_result import Information_loss_result
+from anonymization.utils.sensitivity_type import Sensitivity_type
 import pandas as pd
 from IPython.display import display
 import copy
-from entities.disclosure_risk_result import Disclosure_risk_result
-from entities.dataset import Dataset
-from entities.dataset_SPF import Dataset_SPF
-from entities.record import Record
+from anonymization.entities.disclosure_risk_result import Disclosure_risk_result
+from anonymization.entities.dataset import Dataset
+from anonymization.entities.dataset_SPF import Dataset_SPF
+from anonymization.entities.record import Record
 from tqdm.auto import tqdm
-from utils import utils, constants
+from anonymization.utils import utils, constants
 
 
 class Anonymization_scheme(ABC):

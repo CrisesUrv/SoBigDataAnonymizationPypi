@@ -1,6 +1,6 @@
 # from src.entities.record import Record
 # from abc import ABC, abstractmethod
-from entities.record import Record
+from anonymization.entities.record import Record
 from abc import ABC, abstractmethod
 
 

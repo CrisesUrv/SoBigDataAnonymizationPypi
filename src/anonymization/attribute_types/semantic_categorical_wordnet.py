@@ -3,8 +3,8 @@
 # import nltk
 # from nltk.corpus import wordnet
 # from random import sample
-from attribute_types.value import Value
-from utils import constants
+from anonymization.attribute_types.value import Value
+from anonymization.utils import constants
 import nltk
 from nltk.corpus import wordnet
 from random import sample

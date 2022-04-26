@@ -1,6 +1,6 @@
 # from src.entities.dataset import Dataset
 # from IPython.display import display
-from entities.dataset import Dataset
+from anonymization.entities.dataset import Dataset
 from IPython.display import display
 
 

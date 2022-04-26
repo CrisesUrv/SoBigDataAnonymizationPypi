@@ -1,11 +1,11 @@
-from src.entities.dataset_SPF import Dataset_SPF
-from src.algorithms.mdav import Mdav
-from src.algorithms.k_anonymity import K_anonymity
-from src.algorithms.anonymization_scheme import Anonymization_scheme
+from anonymization.entities.dataset_SPF import Dataset_SPF
+from anonymization.algorithms.mdav import Mdav
+from anonymization.algorithms.k_anonymity import K_anonymity
+from anonymization.algorithms.anonymization_scheme import Anonymization_scheme
 from risk_assessment.sequentialprivacyframe import SequentialPrivacyFrame
-from src.utils import constants
-from src.utils.sensitivity_type import Sensitivity_type
-from src.attribute_types.attribute_type import Attribute_type
+from anonymization.utils import constants
+from anonymization.utils.sensitivity_type import Sensitivity_type
+from anonymization.attribute_types.attribute_type import Attribute_type
 
 """
 (See also examples of use in section 7 of the jupyter notebook: test_anonymization.ipynb)

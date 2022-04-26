@@ -1,7 +1,7 @@
 # import math
 # from src.utils.sensitivity_type import Sensitivity_type
 import math
-from utils.sensitivity_type import Sensitivity_type
+from anonymization.utils.sensitivity_type import Sensitivity_type
 
 
 class Record:

@@ -2,56 +2,49 @@
 # from src.utils import utils, constants
 # from datetime import datetime
 # import numpy as np
-# import pandas as pd
-from attribute_types.value import Value
-from utils import utils, constants
+from anonymization.attribute_types.value import Value
+from anonymization.utils import utils, constants
 from datetime import datetime
 import numpy as np
-import pandas as pd
 
 
-class Datetime(Value):
-    """Datetime
+class Date(Value):
+    """Date
 
-    Class that implements the necessary methods to deal with attribute type datetime values
+    Class that implements the necessary methods to deal with attribute type date values
 
     """
     def __init__(self, value):
         """Constructor, called from inherited classes
-        Creates an instance of the attribute type for datetime values
+        Creates an instance of the attribute type for date values
 
         Parameters
         ----------
         value :
-            the date is received as a string: yyyy-mm-dd hh:mm:ss
+            the date is received as a string: dd/mm/yyyy
 
         See Also
         --------
         :class:`Value`
         """
         self.value = value
-        value_datetime = None
-        if type(value) is str:
-            value_datetime = datetime.fromisoformat(value)
-        elif type(value) is pd.Timestamp:
-            value_datetime = value.to_pydatetime()
         self.id = 0
-        self.timestamp = value_datetime.timestamp()
+        self.timestamp = Date.date_to_timestamp(self.value)
 
     def distance(self, value):
         """distance
 
-        Calculates the distance between this datetime and the received value
+        Calculates the distance between this date and the received value
 
         Parameters
         ----------
         value :
-            The other datetime to calculate the distance.
+            The other date to calculate the distance.
 
         Returns
         -------
         float
-            The distance between the two datetimes.
+            The distance between the two dates.
 
         See Also
         --------
@@ -63,28 +56,28 @@ class Datetime(Value):
     def calculate_centroid(values, **kwargs):
         """calculate_centroid
 
-        Calculates the datetime that is the centroid of the list of datetimes given as parameter
-        The centroid is the mean of datetimes
+        Calculates the date that is the centroid of the list of dates given as parameter
+        The centroid is the mean of dates
 
         Parameters
         ----------
         values :
-            The list of datetimes to calculate its centroid
+            The list of dates to calculate its centroid
 
         **kwargs : optional
             Additional arguments that the specific attribute type value may need to calculate the centroid
 
         Returns
         -------
-        Datetime
-            The datetime that is the centroid of the list of datetimes.
+        Date
+            The date that is the centroid of the list of dates.
         """
         if constants.EPSILON in kwargs.keys():
-            centroid = Datetime.calculate_dp_centroid(values, **kwargs)
+            centroid = Date.calculate_dp_centroid(values, **kwargs)
             return centroid
         # date resulting of the mean of timestamps
-        mean = Datetime.calculate_mean(values)
-        centroid = Datetime(mean)
+        mean = Date.calculate_mean(values)
+        centroid = Date(mean)
 
         return centroid
 
@@ -92,33 +85,33 @@ class Datetime(Value):
     def calculate_dp_centroid(values, **kwargs):
         """calculate_centroid
 
-        Calculates the datetime that is the differential private centroid of the list datetimes given as parameter
-        The centroid is the mean of datetimes with a laplace noise added and bounded to the
+        Calculates the date that is the differential private centroid of the list dates given as parameter
+        The centroid is the mean of dates with a laplace noise added and bounded to the
         min and max possible values.
 
         Parameters
         ----------
         values :
-            The list of datetimes to calculate its centroid
+            The list of dates to calculate its centroid
 
         **kwargs : optional
             Additional arguments that the specific attribute type value may need to calculate the centroid
 
         Returns
         -------
-        Datetime
-            The datetime that is the differential private centroid of the list of datetimes.
+        Date
+            The date that is the differential private centroid of the list of dates.
         """
-        mean = Datetime.calculate_mean(values)
-        mean = Datetime.datetime_to_timestamp(mean)
+        mean = Date.calculate_mean(values)
+        mean = Date.date_to_timestamp(mean)
         epsilon = float(kwargs[constants.EPSILON])
         k = float(kwargs[constants.K])
-        max_value = Datetime.datetime_to_timestamp(kwargs[constants.MAX_VALUE])
-        min_value = Datetime.datetime_to_timestamp(kwargs[constants.MIN_VALUE])
+        max_value = Date.date_to_timestamp(kwargs[constants.MAX_VALUE])
+        min_value = Date.date_to_timestamp(kwargs[constants.MIN_VALUE])
         scale = (max_value - min_value) / (k * epsilon)
         dp_centroid = utils.add_laplace_noise(mean, scale, max_value, min_value)
-        dp_centroid = Datetime.timestamp_to_datetime(dp_centroid)
-        dp_centroid = Datetime(dp_centroid)
+        dp_centroid = Date.timestamp_to_date(dp_centroid)
+        dp_centroid = Date(dp_centroid)
 
         return dp_centroid
 
@@ -126,13 +119,13 @@ class Datetime(Value):
     def sort(values):
         """sort
 
-        Sorts the list of datetimes received as parameter. The list is sorted in function of
-        distance of each element to the datetime reference value.
+        Sorts the list of dates received as parameter. The list is sorted in function of
+        distance of each element to the date reference value.
 
         Parameters
         ----------
         values :
-            The list of datetime to calculate its centroid
+            The list of date to calculate its centroid
         """
         values.sort(key=lambda x: x.timestamp)
 
@@ -140,17 +133,17 @@ class Datetime(Value):
     def calculate_standard_deviation(values):
         """calculate_standard_deviation
 
-        Calculates the standard deviation of the list of datetimes received as parameter.
+        Calculates the standard deviation of the list of dates received as parameter.
 
         Parameters
         ----------
         values :
-            The list of datetimes to calculate the standard deviation
+            The list of dates to calculate the standard deviation
 
         Returns
         -------
         float
-            The standard deviation of the list of datetimes.
+            The standard deviation of the list of dates.
         """
         values_temp = []
         for value in values:
@@ -162,23 +155,23 @@ class Datetime(Value):
     def calculate_mean(values):
         """calculate_mean
 
-        Calculates the mean of the list of datetimes received as parameter.
-        The mean consist of the mean of the timestamps resulting of the datetimes
+        Calculates the mean of the list of dates received as parameter.
+        The mean consist of the mean of the timestamps resulting of the dates
         Parameters
         ----------
         values :
-            The list of datetimes to calculate the mean
+            The list of dates to calculate the mean
 
         Returns
         -------
-        Datetime
-            The mean of the list of datetimes.
+        Date
+            The mean of the list of dates.
         """
         mean = 0
         for value in values:
             mean += value.timestamp
         mean /= len(values)
-        mean = Datetime.timestamp_to_datetime(mean)
+        mean = Date.timestamp_to_date(mean)
 
         return mean
 
@@ -186,20 +179,20 @@ class Datetime(Value):
     def calculate_variance(values):
         """calculate_variance
 
-        Calculates the variance of the list of datetimes received as parameter.
+        Calculates the variance of the list of dates received as parameter.
 
         Parameters
         ----------
         values :
-            The list of datetimes to calculate the variance
+            The list of dates to calculate the variance
 
         Returns
         -------
         float
-            The variance of the list of datetimes.
+            The variance of the list of dates.
         """
-        mean = Datetime.calculate_mean(values)
-        mean = Datetime(mean)
+        mean = Date.calculate_mean(values)
+        mean = Date(mean)
         variance = 0
         for value in values:
             partial = value.distance(mean)
@@ -213,17 +206,17 @@ class Datetime(Value):
     def calculate_min_max(values, margin):
         """calculate_min_max
 
-        Calculates the min and max value of the list of datetimes received as parameter.
+        Calculates the min and max value of the list of dates received as parameter.
 
         Parameters
         ----------
         values :
-            The list of datetimes to calculate the min and max value
+            The list of dates to calculate the min and max value
 
         Returns
         -------
         Date, Date
-            The min and max datetimes.
+            The min and max dates.
         """
         mini = min(values, key=lambda x: x.timestamp)
         maxi = max(values, key=lambda x: x.timestamp)
@@ -231,9 +224,9 @@ class Datetime(Value):
         mini = mini.timestamp - (maxi_margin - maxi.timestamp)
         maxi = maxi_margin
         d = datetime.fromtimestamp(mini)
-        mini = str(d)
+        mini = str(d.day) + "/" + str(d.month) + "/" + str(d.year)
         d = datetime.fromtimestamp(maxi)
-        maxi = str(d)
+        maxi = str(d.day) + "/" + str(d.month) + "/" + str(d.year)
 
         return mini, maxi
 
@@ -241,31 +234,32 @@ class Datetime(Value):
     def calculate_reference_value(values):
         """calculate_reference_value
 
-        Calculates the reference value of the list of datetimes received as parameter.
+        Calculates the reference value of the list of dates received as parameter.
 
         Parameters
         ----------
         values :
-            The list of datetimes to calculate the reference value
+            The list of dates to calculate the reference value
 
         Returns
         -------
-        Datetime
-            The datetime reference value.
+        Date
+            The date reference value.
         """
-        Datetime.reference_value = min(values, key=lambda x: x.timestamp)
+        Date.reference_value = min(values, key=lambda x: x.timestamp)
 
-        return Datetime.reference_value
-
-    @staticmethod
-    def datetime_to_timestamp(date):
-        date = datetime.fromisoformat(date)
-        return date.timestamp()
+        return Date.reference_value
 
     @staticmethod
-    def timestamp_to_datetime(timestamp):
+    def date_to_timestamp(date):
+        date_temp = date.split("/")
+        d = datetime(int(date_temp[2]), int(date_temp[1]), int(date_temp[0]))
+        return d.timestamp()
+
+    @staticmethod
+    def timestamp_to_date(timestamp):
         d = datetime.fromtimestamp(timestamp)
-        return str(d)
+        return str(d.day) + "/" + str(d.month) + "/" + str(d.year)
 
     def __eq__(self, other):
         return self.timestamp == other.timestamp
@@ -274,4 +268,4 @@ class Datetime(Value):
         return self.timestamp < other.timestamp
 
     def __str__(self):
-        return str(self.value)
+        return self.value

@@ -2,8 +2,8 @@
 # from src.entities.dataset import Dataset
 # from tqdm.auto import tqdm
 # import numpy as np
-from algorithms.algorithm import Algorithm
-from entities.dataset import Dataset
+from anonymization.algorithms.algorithm import Algorithm
+from anonymization.entities.dataset import Dataset
 from tqdm.auto import tqdm
 import numpy as np
 

@@ -3,9 +3,9 @@
 # from src.utils import utils
 # import copy
 # from timeit import default_timer as timer
-from algorithms.anonymization_scheme import Anonymization_scheme
-from utils.sensitivity_type import Sensitivity_type
-from utils import utils
+from anonymization.algorithms.anonymization_scheme import Anonymization_scheme
+from anonymization.utils.sensitivity_type import Sensitivity_type
+from anonymization.utils import utils
 import copy
 from timeit import default_timer as timer
 

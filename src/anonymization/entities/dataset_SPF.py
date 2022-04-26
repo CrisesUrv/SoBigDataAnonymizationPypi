@@ -1,8 +1,8 @@
 # from src.entities.dataset import Dataset
 # from src.utils import constants
 # from IPython.display import display
-from entities.dataset import Dataset
-from utils import constants
+from anonymization.entities.dataset import Dataset
+from anonymization.utils import constants
 from IPython.display import display
 
 

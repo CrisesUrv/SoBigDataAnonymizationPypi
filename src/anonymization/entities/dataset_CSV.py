@@ -1,5 +1,5 @@
 # from src.entities.dataset import Dataset
-from entities.dataset import Dataset
+from anonymization.entities.dataset import Dataset
 
 
 class Dataset_CSV(Dataset):

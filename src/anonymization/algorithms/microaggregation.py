@@ -2,8 +2,8 @@
 # from src.entities.dataset import Dataset
 # from tqdm.auto import tqdm
 # import copy
-from algorithms.algorithm import Algorithm
-from entities.dataset import Dataset
+from anonymization.algorithms.algorithm import Algorithm
+from anonymization.entities.dataset import Dataset
 from tqdm.auto import tqdm
 import copy
 

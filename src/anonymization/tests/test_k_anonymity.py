@@ -1,8 +1,8 @@
-from src.entities.dataset_DataFrame import Dataset_DataFrame
-from src.algorithms.mdav import Mdav
-from src.algorithms.k_anonymity import K_anonymity
-from src.utils import utils
-from src.algorithms.anonymization_scheme import Anonymization_scheme
+from anonymization.entities.dataset_DataFrame import Dataset_DataFrame
+from anonymization.algorithms.mdav import Mdav
+from anonymization.algorithms.k_anonymity import K_anonymity
+from anonymization.utils import utils
+from anonymization.algorithms.anonymization_scheme import Anonymization_scheme
 
 """
 References:

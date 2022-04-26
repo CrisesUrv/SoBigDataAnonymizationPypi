@@ -1,8 +1,8 @@
 # from src.attribute_types.value import Value
 # from src.utils import utils, constants
 # import math
-from attribute_types.value import Value
-from utils import utils, constants
+from anonymization.attribute_types.value import Value
+from anonymization.utils import utils, constants
 import math
 
 
